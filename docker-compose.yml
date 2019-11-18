@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: "3.7"
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "80:80"
+      - "9229:9229"
+    container_name: node-app
+    restart: always 
+
+  postgres:
+    image: postgres:11
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: scaffold
